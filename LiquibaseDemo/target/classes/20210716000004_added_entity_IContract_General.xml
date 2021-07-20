@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="GETDATE()" dbms="mssql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity IContract_General.
+    -->
+    <changeSet id="20210716000004" author="jhipster">
+        <createTable tableName="icontract_general">
+            <column name="inward_contract_id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            
+            <column name="inward_contract_ref_no" type="text">
+                <constraints unique="true" nullable="false" uniqueConstraintName="vc_icontract_ref_no" />
+            </column>
+            
+            <column name="inward_contract_name" type="text">
+                <constraints nullable="false" />
+            </column>
+            
+             <column name="contract_type_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            
+             <column name="inward_program_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="contract_status_id" type="date">
+                <constraints nullable="false" />
+            </column>
+            
+             <column name="inception_date" type="integer">
+                <constraints nullable="false" />
+            </column>
+            
+             <column name="end_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            
+             <column name="management_end_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            
+             <column name="date_of_notice" type="date">
+                <constraints nullable="true" />
+            </column>
+            
+             <column name="renewal_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            
+             <column name="renewed_contract_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            
+             <column name="contract_description" type="text(2000)">
+                <constraints nullable="true" />
+            </column>
+             <column name="loss_corridor"  type="boolean" valueBoolean="false" >
+                <constraints nullable="false" />
+            </column>
+            
+             <column name="min_loss_ratio" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
+             <column name="max_loss_ratio" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
+             <column name="geographic_id" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="delete_status" type="bigint" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="created_user" type="text">
+                <constraints nullable="false" />
+            </column>
+            
+            <column name="created_date" type="date">
+                <constraints nullable="false" />
+            </column>
+            
+            <column name="updated_user" type="text">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="updated_date" type="date">
+                <constraints nullable="false" />
+            </column>
+
+            <!-- Jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>
